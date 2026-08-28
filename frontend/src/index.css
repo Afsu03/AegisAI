@@ -1,0 +1,562 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Gilleto';
+  src: url('/fonts/GilletoSansBlackOblique-BlackOblique.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mileast';
+  src: url('/fonts/Mileast.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mileast';
+  src: url('/fonts/Mileast Italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Eternal Bloom';
+  src: url('/fonts/Eternal Bloom.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Komika';
+  src: url('/fonts/komika/KOMIKASL.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Komika';
+  src: url('/fonts/komika/KOMIKASK.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Komika';
+  src: url('/fonts/komika/KOMIKAHB.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cravelo';
+  src: url('/fonts/Cravelo DEMO.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Austin';
+  src: url('/fonts/Austin Shocks.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================================================
+   AEGISAI v2 — MINIMAL MONOCHROME RESEARCH DESIGN SYSTEM
+   Philosophy: Technical · Research-oriented · Monochrome · Calm
+   ========================================================= */
+
+@layer base {
+  :root, [data-theme="dark"], .dark {
+    /* Strict Minimal Palette: Black, Charcoal, Warm Cream */
+    --bg:             #0A0A0A;
+    --surface:        #11110F;
+    --surface-muted:  #181815;
+    --card:           #11110F;
+    --border:         #2A2926;
+    --border-sub:     #1F1E1B;
+
+    /* Typography & Warm Cream Tones */
+    --text-primary:   #F5F2EA;
+    --text-secondary: #8C8981;
+    --text-muted:     #6B6860;
+    --text-dark:      #0A0A0A;
+    --heading-color:  #FAF5EA;
+
+    /* Subtle Restrained Status Tones */
+    --status-active:  #F5F2EA;
+    --status-accent:  #C2BDB0;
+    --status-warn:    #D9B679;
+    --status-alert:   #D97979;
+
+    /* Border Radius */
+    --radius-sm: 3px;
+    --radius:    4px;
+    --radius-md: 6px;
+  }
+
+  [data-theme="light"], .light {
+    /* Light Minimal Palette: Warm Paper, Pure White, Deep Charcoal */
+    --bg:             #F7F5F0;
+    --surface:        #FFFFFF;
+    --surface-muted:  #EDEAE3;
+    --card:           #FFFFFF;
+    --border:         #D6D1C6;
+    --border-sub:     #E5E1D8;
+
+    /* Typography & Warm Charcoal Tones */
+    --text-primary:   #181816;
+    --text-secondary: #5A574E;
+    --text-muted:     #827E74;
+    --text-dark:      #FFFFFF;
+    --heading-color:  #11110F;
+
+    /* Subtle Restrained Status Tones */
+    --status-active:  #181816;
+    --status-accent:  #3A3832;
+    --status-warn:    #9A7228;
+    --status-alert:   #B83B3B;
+
+    /* Border Radius */
+    --radius-sm: 3px;
+    --radius:    4px;
+    --radius-md: 6px;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  p {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    line-height: 1.65;
+  }
+
+  /* Custom Minimal Scrollbars */
+  ::-webkit-scrollbar       { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #3f3e3a; }
+
+  ::selection {
+    background: #F5F2EA;
+    color: #0A0A0A;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Gilleto', 'Mileast', 'Eternal Bloom', 'Komika', 'Austin', sans-serif;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--heading-color, #FAF5EA);
+    letter-spacing: -0.01em;
+  }
+
+  .font-display {
+    font-family: 'Gilleto', 'Mileast', 'Eternal Bloom', 'Komika', 'Austin', sans-serif;
+    color: var(--heading-color, #FAF5EA);
+  }
+
+  .font-serif {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  button { cursor: pointer; font-family: 'Times New Roman', Times, Georgia, serif; }
+  input, select, textarea { font-family: 'Times New Roman', Times, Georgia, serif; }
+
+  code, pre, kbd, samp {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+}
+
+/* =========================================================
+   REFINED COMPONENT UTILITIES
+   ========================================================= */
+@layer components {
+
+  /* ── Background ── */
+  .app-bg {
+    background-color: var(--bg);
+    min-height: 100vh;
+  }
+
+  /* ── Typography Scale ── */
+  .page-title {
+    font-family: 'Gilleto', 'Mileast', 'Eternal Bloom', 'Komika', 'Austin', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--heading-color, #FAF5EA);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .section-title {
+    font-family: 'Gilleto', 'Mileast', 'Eternal Bloom', 'Komika', 'Austin', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--heading-color, #FAF5EA);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+
+  .card-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .section-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+  }
+
+  .page-description {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* ── Cards & Panels ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color 0.15s ease;
+  }
+
+  .card:hover {
+    border-color: #3f3e3a;
+  }
+
+  .card-accent {
+    border-left: 2px solid var(--text-primary);
+  }
+
+  /* ── Flat Stat Display ── */
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    transition: border-color 0.15s ease;
+  }
+
+  .stat-card:hover {
+    border-color: #3f3e3a;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: #F5F2EA;
+    color: #0A0A0A;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: var(--radius);
+    border: none;
+    transition: opacity 0.15s ease, background 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover {
+    background: #E6E2D8;
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: transparent;
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: background 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .btn-secondary:hover {
+    background: var(--surface-muted);
+    border-color: #3f3e3a;
+  }
+
+  .btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    border: none;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .btn-ghost:hover {
+    color: var(--text-primary);
+    background: var(--surface-muted);
+  }
+
+  /* ── Minimal Monochrome Badges ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .badge-danger   { background: rgba(217, 121, 121, 0.12); color: #D97979; border: 1px solid rgba(217, 121, 121, 0.25); }
+  .badge-warning  { background: rgba(217, 182, 121, 0.12); color: #D9B679; border: 1px solid rgba(217, 182, 121, 0.25); }
+  .badge-success  { background: rgba(245, 242, 234, 0.1);  color: #F5F2EA; border: 1px solid rgba(245, 242, 234, 0.2); }
+  .badge-accent   { background: rgba(245, 242, 234, 0.12); color: #F5F2EA; border: 1px solid rgba(245, 242, 234, 0.25); }
+  .badge-neutral  { background: var(--surface-muted);       color: #8C8981; border: 1px solid var(--border); }
+  .badge-info     { background: rgba(194, 189, 176, 0.1);  color: #C2BDB0; border: 1px solid rgba(194, 189, 176, 0.2); }
+  .badge-medium   { background: rgba(217, 182, 121, 0.15); color: #D9B679; border: 1px solid rgba(217, 182, 121, 0.3); }
+  .badge-low      { background: rgba(140, 137, 129, 0.12); color: #8C8981; border: 1px solid rgba(140, 137, 129, 0.25); }
+
+  /* ── Status Dots ── */
+  .dot-online  { width: 7px; height: 7px; border-radius: 50%; background: #F5F2EA; flex-shrink: 0; }
+  .dot-warning { width: 7px; height: 7px; border-radius: 50%; background: #D9B679; flex-shrink: 0; }
+  .dot-danger  { width: 7px; height: 7px; border-radius: 50%; background: #D97979; flex-shrink: 0; }
+  .dot-neutral { width: 7px; height: 7px; border-radius: 50%; background: var(--text-muted); flex-shrink: 0; }
+
+  /* ── Section Label ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── Divider ── */
+  .divider { border: none; border-top: 1px solid var(--border); }
+
+  /* ── Input ── */
+  .input {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-size: 13px;
+    padding: 9px 12px;
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+  }
+
+  .input:focus { border-color: #8C8981; }
+  .input::placeholder { color: var(--text-muted); }
+
+  /* ── Minimal Data Table ── */
+  .data-table { width: 100%; border-collapse: collapse; }
+
+  .data-table thead tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .data-table thead th {
+    padding: 12px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .data-table tbody tr {
+    border-bottom: 1px solid var(--border-sub);
+    transition: background 0.1s;
+  }
+
+  .data-table tbody tr:hover { background: var(--surface-muted); }
+  .data-table tbody tr:last-child { border-bottom: none; }
+
+  .data-table tbody td {
+    padding: 13px 16px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    vertical-align: middle;
+  }
+
+  /* ── Mono text ── */
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ── Sidebar Nav Item ── */
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color 0.15s, background 0.15s;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .nav-item:hover {
+    color: var(--text-primary);
+    background: var(--surface-muted);
+  }
+
+  /* Active Navigation: Subtle Cream/White Background + Dark Text */
+  .nav-item.active {
+    color: #0A0A0A !important;
+    background: #F5F2EA !important;
+    border-left: 3px solid #F5F2EA;
+    font-weight: 600;
+  }
+
+  .nav-item.active svg {
+    color: #0A0A0A !important;
+  }
+
+  /* ── Fade In Animation ── */
+  .fade-in {
+    animation: fadeIn 0.2s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ── Slide + Fade In (page-level transition) ── */
+  .slide-fade-in {
+    animation: slideFadeIn 0.2s ease forwards;
+  }
+
+  @keyframes slideFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Stage Status Label Transition ── */
+  .status-label {
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+
+  /* ── Code block ── */
+  .code-block {
+    background: #080808;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #8C8981;
+    overflow-x: auto;
+  }
+
+  /* ── Pipeline Stage Card ── */
+  .pipeline-stage {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .pipeline-stage.active {
+    background: var(--surface-muted);
+    border-color: #3f3e3a;
+  }
+
+  /* ── Agent Status Indicator ── */
+  .agent-status-waiting  { color: var(--text-muted); }
+  .agent-status-running  { color: var(--status-warn); }
+  .agent-status-complete { color: var(--text-primary); }
+  .agent-status-failed   { color: var(--status-alert); }
+
+  /* ── Spin animation ── */
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+}

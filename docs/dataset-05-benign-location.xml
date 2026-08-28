@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+  <event>
+    <timestamp>2026-08-15 12:00:00</timestamp>
+    <event_id>EVT-0501</event_id>
+    <username>bob_sales</username>
+    <role>Sales</role>
+    <ip_address>198.51.100.70</ip_address>
+    <country>USA</country>
+    <user_agent>Edge Windows</user_agent>
+    <method>POST</method>
+    <endpoint>/login</endpoint>
+    <status_code>200</status_code>
+    <login_result>SUCCESS</login_result>
+    <failed_attempts>0</failed_attempts>
+    <session_id>SID-0501</session_id>
+    <risk_level>Low</risk_level>
+    <threat_label>Normal Login</threat_label>
+  </event>
+  <event>
+    <timestamp>2026-08-15 12:20:00</timestamp>
+    <event_id>EVT-0502</event_id>
+    <username>bob_sales</username>
+    <role>Sales</role>
+    <ip_address>198.51.100.75</ip_address>
+    <country>Canada</country>
+    <user_agent>Chrome Android</user_agent>
+    <method>POST</method>
+    <endpoint>/login</endpoint>
+    <status_code>200</status_code>
+    <login_result>SUCCESS</login_result>
+    <failed_attempts>0</failed_attempts>
+    <session_id>SID-0502</session_id>
+    <risk_level>Low</risk_level>
+    <threat_label>Normal Login (No Coordinates)</threat_label>
+  </event>
+</events>

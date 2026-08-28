@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+  <event>
+    <timestamp>2026-08-15 17:00:00</timestamp>
+    <event_id>EVT-1001</event_id>
+    <username>travel_analyst</username>
+    <role>Analyst</role>
+    <ip_address>198.51.100.15</ip_address>
+    <country>USA</country>
+    <latitude>37.7749</latitude>
+    <longitude>-122.4194</longitude>
+    <user_agent>Chrome Mac</user_agent>
+    <method>POST</method>
+    <endpoint>/login</endpoint>
+    <status_code>200</status_code>
+    <login_result>SUCCESS</login_result>
+    <failed_attempts>0</failed_attempts>
+    <session_id>SID-1001</session_id>
+    <risk_level>Low</risk_level>
+    <threat_label>San Francisco Login</threat_label>
+  </event>
+  <event>
+    <timestamp>2026-08-15 17:45:00</timestamp>
+    <event_id>EVT-1002</event_id>
+    <username>travel_analyst</username>
+    <role>Analyst</role>
+    <ip_address>203.0.113.22</ip_address>
+    <country>Japan</country>
+    <latitude>35.6762</latitude>
+    <longitude>139.6503</longitude>
+    <user_agent>Firefox Linux</user_agent>
+    <method>POST</method>
+    <endpoint>/login</endpoint>
+    <status_code>200</status_code>
+    <login_result>SUCCESS</login_result>
+    <failed_attempts>0</failed_attempts>
+    <session_id>SID-1002</session_id>
+    <risk_level>Critical</risk_level>
+    <threat_label>Tokyo Login (Impossible Speed)</threat_label>
+  </event>
+</events>

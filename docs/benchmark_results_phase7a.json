@@ -1,0 +1,243 @@
+{
+  "timestamp": "2026-08-15T07:29:35.686Z",
+  "environment": {
+    "os": "win32",
+    "osArch": "x64",
+    "nodeVersion": "v24.11.1",
+    "prismaVersion": "7.9.1",
+    "database": "Neon PostgreSQL (Serverless, AWS ap-southeast-1)",
+    "backendFramework": "Express TypeScript (Node.js)",
+    "aiProvider": "Google Gemini",
+    "defaultModel": "gemini-2.0-flash-lite",
+    "benchmarkDate": "2026-08-15T07:29:35.686Z"
+  },
+  "exp1_baseline": {
+    "datasetName": "AegisAI_Dummy_Website_Authentication_Logs_100.csv",
+    "fileSize": 13230,
+    "rawLines": 101,
+    "parsedRecords": 100,
+    "successfulEvents": 81,
+    "failedEvents": 19,
+    "knownBruteForceEvents": 0,
+    "benignEvents": 100
+  },
+  "exp2_detection": {
+    "totalRecords": 100,
+    "runs": {
+      "run1": 3.67,
+      "run2": 1.77,
+      "run3": 1.89,
+      "run4": 2.59,
+      "run5": 2.52,
+      "mean": 2.49,
+      "min": 1.77,
+      "max": 3.67
+    },
+    "threatCount": 1,
+    "threats": [
+      {
+        "title": "Possible Brute Force Attack",
+        "category": "AUTHENTICATION",
+        "severity": "HIGH",
+        "riskScore": 85
+      }
+    ]
+  },
+  "exp3_scalability": {
+    "results": [
+      {
+        "records": 100,
+        "detectionTimeMs": 2.79,
+        "threatsDetected": 1,
+        "throughputRecordsPerSec": 35842
+      },
+      {
+        "records": 500,
+        "detectionTimeMs": 8,
+        "threatsDetected": 13,
+        "throughputRecordsPerSec": 62500
+      },
+      {
+        "records": 1000,
+        "detectionTimeMs": 17.78,
+        "threatsDetected": 13,
+        "throughputRecordsPerSec": 56243
+      },
+      {
+        "records": 2500,
+        "detectionTimeMs": 29.86,
+        "threatsDetected": 13,
+        "throughputRecordsPerSec": 83724
+      }
+    ]
+  },
+  "exp4_multiformat": {
+    "formats": [
+      {
+        "format": "CSV",
+        "fileSizeBytes": 784,
+        "recordsParsed": 10,
+        "parseTimeMs": 7.62,
+        "detectionTimeMs": 0.32,
+        "threatsDetected": 1,
+        "parsingErrors": 0
+      },
+      {
+        "format": "JSON",
+        "fileSizeBytes": 1852,
+        "recordsParsed": 10,
+        "parseTimeMs": 0.28,
+        "detectionTimeMs": 0.11,
+        "threatsDetected": 1,
+        "parsingErrors": 0
+      },
+      {
+        "format": "JSONL",
+        "fileSizeBytes": 1429,
+        "recordsParsed": 10,
+        "parseTimeMs": 0.27,
+        "detectionTimeMs": 0.11,
+        "threatsDetected": 1,
+        "parsingErrors": 0
+      },
+      {
+        "format": "XLSX",
+        "fileSizeBytes": 18598,
+        "recordsParsed": 10,
+        "parseTimeMs": 15.37,
+        "detectionTimeMs": 0.13,
+        "threatsDetected": 1,
+        "parsingErrors": 0
+      },
+      {
+        "format": "XML",
+        "fileSizeBytes": 2307,
+        "recordsParsed": 10,
+        "parseTimeMs": 5.77,
+        "detectionTimeMs": 0.72,
+        "threatsDetected": 1,
+        "parsingErrors": 0
+      }
+    ]
+  },
+  "exp5_rules": {
+    "rule1_bruteForce": {
+      "detected": true,
+      "score": 85
+    },
+    "rule4_impossibleTravel": {
+      "noCoordinatesAlerts": 0,
+      "validCoordinatesAlerts": 1,
+      "evidence": {
+        "username": "alice",
+        "previousLoginTime": "2026-08-14T10:00:00.000Z",
+        "currentLoginTime": "2026-08-14T10:30:00.000Z",
+        "previousLatitude": 40.7128,
+        "previousLongitude": -74.006,
+        "currentLatitude": 51.5074,
+        "currentLongitude": -0.1278,
+        "distanceKm": 5570.22,
+        "timeDifferenceMinutes": 30,
+        "calculatedSpeedKmh": 11140.44
+      }
+    },
+    "rule5_privilegedActivity": {
+      "oneFailAlerts": 0,
+      "threeFailsAlerts": 1,
+      "threeFailsScore": 70,
+      "sixFailsPrioritizedTitle": "Possible Brute Force Attack",
+      "sixFailsPrioritizedScore": 85
+    }
+  },
+  "exp6_latency": {
+    "agent01_threatAnalysis": {
+      "durationMs": 12291,
+      "model": "gemini-flash-latest",
+      "confidence": 0.95
+    },
+    "agent02_incidentSummary": {
+      "durationMs": 6168,
+      "model": "gemini-flash-latest",
+      "title": "High-Severity Brute Force Authentication Attack Against Admin Account"
+    },
+    "agent03_riskAssessment": {
+      "durationMs": 80036,
+      "model": "gemini-3.6-flash",
+      "riskScore": 38,
+      "riskLevel": "MEDIUM"
+    },
+    "agent04_recommendation": {
+      "durationMs": 12161,
+      "model": "gemini-3.6-flash",
+      "actionsCount": 2
+    },
+    "totalSequentialMs": 110656
+  },
+  "exp7_cache": {
+    "freshInvestigationTimeMs": 110656,
+    "cachedRetrievalTimeMs": 785,
+    "speedupFactor": "141x",
+    "geminiCallsOnCacheHit": 0
+  },
+  "exp8_partial_resume": {
+    "scenario": "Stages 1 & 2 cached, Stages 3 & 4 pending",
+    "agent01_status": "CACHED (Skipped LLM call)",
+    "agent02_status": "CACHED (Skipped LLM call)",
+    "agent03_status": "EXECUTED (Fresh LLM call)",
+    "agent04_status": "EXECUTED (Fresh LLM call)",
+    "executedAgentsLatencyMs": 92197,
+    "savedLatencyMs": 18459
+  },
+  "exp9_quality": {
+    "threatTypeIdentified": "Brute Force Attack",
+    "evidenceGrounding": [
+      "Log events EVT-1018 to EVT-1023 document 6 sequential failed POST authentication requests (status code 401, login_result FAILED) targeting username 'admin' from source IP 203.0.113.55 between 09:11:06 and 09:14:11.",
+      "The failed_attempts counter sequentially increments from 1 to 6 across events EVT-1018 through EVT-1023.",
+      "Multiple User-Agents were used from the same source IP 203.0.113.55 across the attempts ('Chrome Android', 'Firefox/141 Linux', 'Chrome/138 Windows', 'Edge Windows')."
+    ],
+    "confidenceReported": 0.95,
+    "incidentTitle": "High-Severity Brute Force Authentication Attack Against Admin Account",
+    "targetAsset": "admin account",
+    "sourceAttacker": "203.0.113.55",
+    "riskRationale": "An external source IP targeted the privileged 'admin' account with six failed authentication attempts across multiple endpoints within a three-minute window, utilizing varying User-Agent headers. While the potential impact of compromising an administrative account is high, all observed attempts failed (HTTP 401) and no successful authentication was established in the log evidence.",
+    "humanReviewRequired": true,
+    "recommendationsCount": 5
+  },
+  "exp10_risk_score": {
+    "llmInputs": {
+      "likelihood": "MEDIUM",
+      "impact": "HIGH",
+      "targetCriticality": "HIGH",
+      "evidenceStrength": "HIGH"
+    },
+    "formula": "(likelihoodScore * impactScore) / 16 * 100",
+    "calculatedRiskScore": 38,
+    "derivedRiskLevel": "MEDIUM",
+    "derivedPriority": "P3",
+    "formulaIntegrityVerified": true
+  },
+  "exp11_api_usage": {
+    "freshInvestigationAPICalls": 4,
+    "cachedInvestigationAPICalls": 0,
+    "tokenUsageStatus": "Token usage not exposed by current provider implementation.",
+    "modelInvoked": "gemini-flash-latest"
+  },
+  "exp12_byok": {
+    "systemProviderAvailable": true,
+    "byokEncryption": "AES-256-GCM",
+    "keyDecryptedMatchesPlaintext": true,
+    "maskedDisplay": "AIza••••••••XXXX",
+    "keyIsolationVerified": true
+  },
+  "exp13_error_perf": {
+    "errorType": "Invalid API Key Fault Injection",
+    "failureResponseTimeMs": 111,
+    "errorMessage": "Gemini API key is invalid or unauthorized.",
+    "structuredHandling": true
+  },
+  "exp14_db_perf": {
+    "recordsReadCount": 100,
+    "readLatencyMs": 357.32,
+    "cachedInvestigationReadMs": 785
+  }
+}

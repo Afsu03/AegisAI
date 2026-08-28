@@ -1,0 +1,101 @@
+timestamp,event_id,username,role,ip_address,country,user_agent,method,endpoint,status_code,login_result,failed_attempts,session_id,risk_level,threat_label
+2026-08-04 09:00:00,EVT-1000,charlie,User,192.168.1.179,USA,Chrome Android,POST,/api/login,200,SUCCESS,0,SID-194919,Low,Normal
+2026-08-04 09:00:37,EVT-1001,john,User,192.168.4.251,USA,Safari iPhone,POST,/api/login,200,SUCCESS,0,SID-108724,Low,Normal
+2026-08-04 09:01:14,EVT-1002,guest,Guest,192.168.2.3,Singapore,Edge Windows,POST,/dashboard,200,SUCCESS,0,SID-389293,Low,Normal
+2026-08-04 09:01:51,EVT-1003,david,Manager,192.168.2.175,Canada,Edge Windows,POST,/admin,200,SUCCESS,0,SID-212949,Low,Normal
+2026-08-04 09:02:28,EVT-1004,bob,User,192.168.1.106,USA,Chrome Android,POST,/dashboard,200,SUCCESS,0,SID-867302,Low,Normal
+2026-08-04 09:03:05,EVT-1005,bob,User,192.168.1.222,India,Chrome Android,POST,/api/login,200,SUCCESS,0,SID-185194,Low,Normal
+2026-08-04 09:03:42,EVT-1006,bob,User,192.168.5.24,USA,Chrome/138 Windows,POST,/api/login,200,SUCCESS,0,SID-441885,Low,Normal
+2026-08-04 09:04:19,EVT-1007,bob,User,192.168.7.70,Germany,Chrome/138 Windows,POST,/profile,401,FAILED,1,SID-659748,Medium,Suspicious Login
+2026-08-04 09:04:56,EVT-1008,hrmanager,HR,192.168.9.99,Germany,Chrome/138 Windows,POST,/dashboard,401,FAILED,2,SID-768880,Medium,Suspicious Login
+2026-08-04 09:05:33,EVT-1009,alice,User,192.168.2.200,Germany,Edge Windows,POST,/dashboard,200,SUCCESS,0,SID-616552,Low,Normal
+2026-08-04 09:06:10,EVT-1010,david,Manager,192.168.6.188,India,Edge Windows,POST,/api/login,200,SUCCESS,0,SID-520421,Low,Normal
+2026-08-04 09:06:47,EVT-1011,charlie,User,192.168.9.245,USA,Edge Windows,POST,/profile,200,SUCCESS,0,SID-562492,Low,Normal
+2026-08-04 09:07:24,EVT-1012,john,User,192.168.8.220,Canada,Chrome Android,POST,/admin,200,SUCCESS,0,SID-834920,Low,Normal
+2026-08-04 09:08:01,EVT-1013,finance,Finance,192.168.6.239,Germany,Edge Windows,POST,/api/login,200,SUCCESS,0,SID-551867,Low,Normal
+2026-08-04 09:08:38,EVT-1014,guest,Guest,192.168.0.75,India,Chrome Android,POST,/profile,200,SUCCESS,0,SID-844001,Low,Normal
+2026-08-04 09:09:15,EVT-1015,bob,User,192.168.4.29,Singapore,Chrome Android,POST,/profile,200,SUCCESS,0,SID-838604,Low,Normal
+2026-08-04 09:09:52,EVT-1016,bob,User,192.168.1.154,Germany,Chrome Android,POST,/profile,200,SUCCESS,0,SID-792806,Low,Normal
+2026-08-04 09:10:29,EVT-1017,admin,Administrator,192.168.1.10,Singapore,Edge Windows,POST,/api/login,200,SUCCESS,0,SID-487863,Low,Normal
+2026-08-04 09:11:06,EVT-1018,admin,Administrator,203.0.113.55,India,Chrome Android,POST,/login,401,FAILED,1,SID-283767,High,Brute Force
+2026-08-04 09:11:43,EVT-1019,admin,Administrator,203.0.113.55,UK,Firefox/141 Linux,POST,/api/login,401,FAILED,2,SID-282477,High,Brute Force
+2026-08-04 09:12:20,EVT-1020,admin,User,203.0.113.55,Canada,Chrome/138 Windows,POST,/login,401,FAILED,3,SID-858348,High,Brute Force
+2026-08-04 09:12:57,EVT-1021,admin,Guest,203.0.113.55,India,Chrome/138 Windows,POST,/login,401,FAILED,4,SID-642095,High,Brute Force
+2026-08-04 09:13:34,EVT-1022,admin,User,203.0.113.55,USA,Edge Windows,POST,/dashboard,401,FAILED,5,SID-649211,High,Brute Force
+2026-08-04 09:14:11,EVT-1023,admin,User,203.0.113.55,USA,Chrome Android,POST,/api/login,401,FAILED,6,SID-474398,High,Brute Force
+2026-08-04 09:14:48,EVT-1024,finance,Finance,192.168.9.21,India,Safari iPhone,POST,/admin,200,SUCCESS,0,SID-970953,Low,Normal
+2026-08-04 09:15:25,EVT-1025,emma,User,192.168.3.6,Canada,Firefox/141 Linux,POST,/profile,200,SUCCESS,0,SID-684177,Low,Normal
+2026-08-04 09:16:02,EVT-1026,alice,User,192.168.9.91,UK,Chrome Android,POST,/dashboard,200,SUCCESS,0,SID-266353,Low,Normal
+2026-08-04 09:16:39,EVT-1027,david,Manager,192.168.5.150,Singapore,Chrome Android,POST,/login,200,SUCCESS,0,SID-353013,Low,Normal
+2026-08-04 09:17:16,EVT-1028,guest,Guest,192.168.10.26,USA,Edge Windows,POST,/profile,401,FAILED,3,SID-361504,Medium,Suspicious Login
+2026-08-04 09:17:53,EVT-1029,emma,User,192.168.4.254,UK,Edge Windows,POST,/admin,200,SUCCESS,0,SID-563643,Low,Normal
+2026-08-04 09:18:30,EVT-1030,david,Manager,192.168.1.27,India,Chrome/138 Windows,POST,/dashboard,200,SUCCESS,0,SID-933530,Low,Normal
+2026-08-04 09:19:07,EVT-1031,bob,User,192.168.8.33,USA,Firefox/141 Linux,POST,/api/login,200,SUCCESS,0,SID-744043,Low,Normal
+2026-08-04 09:19:44,EVT-1032,david,Manager,192.168.3.105,Singapore,Chrome/138 Windows,POST,/login,200,SUCCESS,0,SID-507916,Low,Normal
+2026-08-04 09:20:21,EVT-1033,hrmanager,HR,192.168.2.128,Germany,Firefox/141 Linux,POST,/dashboard,200,SUCCESS,0,SID-187566,Low,Normal
+2026-08-04 09:20:58,EVT-1034,charlie,User,192.168.7.52,UK,Chrome/138 Windows,POST,/api/login,200,SUCCESS,0,SID-407961,Low,Normal
+2026-08-04 09:21:35,EVT-1035,emma,User,192.168.7.220,Singapore,Chrome/138 Windows,POST,/dashboard,200,SUCCESS,0,SID-210167,Low,Normal
+2026-08-04 09:22:12,EVT-1036,hrmanager,HR,192.168.8.74,Canada,Chrome Android,POST,/login,200,SUCCESS,0,SID-487859,Low,Normal
+2026-08-04 09:22:49,EVT-1037,emma,User,192.168.7.89,USA,Edge Windows,POST,/login,200,SUCCESS,0,SID-242734,Low,Normal
+2026-08-04 09:23:26,EVT-1038,emma,User,192.168.3.87,Canada,Chrome/138 Windows,POST,/dashboard,200,SUCCESS,0,SID-476065,Low,Normal
+2026-08-04 09:24:03,EVT-1039,alice,User,192.168.7.138,USA,Edge Windows,POST,/api/login,200,SUCCESS,0,SID-362325,Low,Normal
+2026-08-04 09:24:40,EVT-1040,david,Manager,192.168.0.112,USA,Chrome Android,POST,/dashboard,200,SUCCESS,0,SID-105541,Low,Normal
+2026-08-04 09:25:17,EVT-1041,david,Manager,192.168.2.53,UK,Firefox/141 Linux,POST,/login,200,SUCCESS,0,SID-917749,Low,Normal
+2026-08-04 09:25:54,EVT-1042,guest,Guest,192.168.9.83,Canada,Firefox/141 Linux,POST,/api/login,200,SUCCESS,0,SID-626746,Low,Normal
+2026-08-04 09:26:31,EVT-1043,hrmanager,HR,192.168.5.209,India,Chrome Android,POST,/dashboard,200,SUCCESS,0,SID-675212,Low,Normal
+2026-08-04 09:27:08,EVT-1044,emma,User,192.168.0.230,USA,Chrome/138 Windows,POST,/profile,200,SUCCESS,0,SID-425443,Low,Normal
+2026-08-04 09:27:45,EVT-1045,john,User,192.168.1.253,Singapore,Firefox/141 Linux,POST,/api/login,200,SUCCESS,0,SID-921270,Low,Normal
+2026-08-04 09:28:22,EVT-1046,emma,User,192.168.1.181,UK,Firefox/141 Linux,POST,/profile,200,SUCCESS,0,SID-327280,Low,Normal
+2026-08-04 09:28:59,EVT-1047,john,Finance,203.0.113.88,Russia,Edge Windows,POST,/admin,401,FAILED,3,SID-445779,High,Credential Stuffing
+2026-08-04 09:29:36,EVT-1048,john,Administrator,198.51.100.10,Brazil,Chrome/138 Windows,POST,/dashboard,401,FAILED,3,SID-527759,High,Credential Stuffing
+2026-08-04 09:30:13,EVT-1049,john,User,203.0.113.88,Brazil,Safari iPhone,POST,/profile,401,FAILED,6,SID-227715,High,Credential Stuffing
+2026-08-04 09:30:50,EVT-1050,david,Manager,192.168.5.5,UK,Chrome/138 Windows,POST,/login,200,SUCCESS,0,SID-966398,Low,Normal
+2026-08-04 09:31:27,EVT-1051,hrmanager,HR,192.168.3.92,USA,Chrome/138 Windows,POST,/dashboard,200,SUCCESS,0,SID-838625,Low,Normal
+2026-08-04 09:32:04,EVT-1052,admin,Administrator,192.168.5.73,USA,Firefox/141 Linux,POST,/login,200,SUCCESS,0,SID-203723,Low,Normal
+2026-08-04 09:32:41,EVT-1053,alice,User,192.168.3.60,India,Chrome Android,POST,/admin,200,SUCCESS,0,SID-691891,Low,Normal
+2026-08-04 09:33:18,EVT-1054,emma,User,192.168.0.85,Singapore,Firefox/141 Linux,POST,/login,401,FAILED,1,SID-758770,Medium,Suspicious Login
+2026-08-04 09:33:55,EVT-1055,david,Manager,192.168.1.96,Canada,Chrome/138 Windows,POST,/admin,200,SUCCESS,0,SID-278462,Low,Normal
+2026-08-04 09:34:32,EVT-1056,john,User,192.168.7.180,Germany,Safari iPhone,POST,/admin,200,SUCCESS,0,SID-156375,Low,Normal
+2026-08-04 09:35:09,EVT-1057,david,Manager,192.168.6.167,USA,Chrome Android,POST,/login,200,SUCCESS,0,SID-615061,Low,Normal
+2026-08-04 09:35:46,EVT-1058,admin,Administrator,192.168.7.40,Canada,Firefox/141 Linux,POST,/dashboard,200,SUCCESS,0,SID-468311,Low,Normal
+2026-08-04 09:36:23,EVT-1059,guest,Guest,192.168.3.32,Canada,Edge Windows,POST,/admin,200,SUCCESS,0,SID-421497,Low,Normal
+2026-08-04 09:37:00,EVT-1060,finance,Finance,192.168.1.58,USA,Chrome/138 Windows,POST,/dashboard,200,SUCCESS,0,SID-272207,Low,Normal
+2026-08-04 09:37:37,EVT-1061,guest,Guest,192.168.9.127,Canada,Chrome/138 Windows,POST,/profile,200,SUCCESS,0,SID-258881,Low,Normal
+2026-08-04 09:38:14,EVT-1062,charlie,User,192.168.9.94,USA,Firefox/141 Linux,POST,/api/login,200,SUCCESS,0,SID-450754,Low,Normal
+2026-08-04 09:38:51,EVT-1063,charlie,User,192.168.1.184,UK,Firefox/141 Linux,POST,/profile,200,SUCCESS,0,SID-614407,Low,Normal
+2026-08-04 09:39:28,EVT-1064,charlie,User,192.168.7.236,Canada,Firefox/141 Linux,POST,/dashboard,200,SUCCESS,0,SID-171162,Low,Normal
+2026-08-04 09:40:05,EVT-1065,david,Manager,192.168.10.53,India,Edge Windows,POST,/admin,200,SUCCESS,0,SID-878004,Low,Normal
+2026-08-04 09:40:42,EVT-1066,admin,Administrator,192.168.4.43,India,Safari iPhone,POST,/profile,200,SUCCESS,0,SID-707027,Low,Normal
+2026-08-04 09:41:19,EVT-1067,alice,User,192.168.10.186,Singapore,Safari iPhone,POST,/admin,401,FAILED,1,SID-989842,Medium,Suspicious Login
+2026-08-04 09:41:56,EVT-1068,charlie,User,192.168.7.179,Germany,Chrome/138 Windows,POST,/api/login,200,SUCCESS,0,SID-289382,Low,Normal
+2026-08-04 09:42:33,EVT-1069,emma,User,192.168.9.122,India,Safari iPhone,POST,/admin,200,SUCCESS,0,SID-220860,Low,Normal
+2026-08-04 09:43:10,EVT-1070,alice,User,192.168.10.99,Germany,Safari iPhone,POST,/admin,200,SUCCESS,0,SID-526157,Low,Normal
+2026-08-04 09:43:47,EVT-1071,finance,User,192.168.7.208,Germany,Firefox/141 Linux,POST,/profile,200,SUCCESS,0,SID-385271,Critical,Impossible Travel
+2026-08-04 09:44:24,EVT-1072,admin,Administrator,192.168.7.247,Germany,Chrome Android,POST,/dashboard,200,SUCCESS,0,SID-312064,Low,Normal
+2026-08-04 09:45:01,EVT-1073,alice,User,192.168.6.210,UK,Chrome/138 Windows,POST,/login,401,FAILED,2,SID-685857,Medium,Suspicious Login
+2026-08-04 09:45:38,EVT-1074,david,Manager,192.168.3.218,Germany,Chrome/138 Windows,POST,/api/login,200,SUCCESS,0,SID-474454,Low,Normal
+2026-08-04 09:46:15,EVT-1075,emma,User,192.168.2.169,USA,Firefox/141 Linux,POST,/login,200,SUCCESS,0,SID-917168,Low,Normal
+2026-08-04 09:46:52,EVT-1076,charlie,User,192.168.3.217,Germany,Edge Windows,POST,/login,200,SUCCESS,0,SID-599198,Low,Normal
+2026-08-04 09:47:29,EVT-1077,bob,User,192.168.10.222,Canada,Safari iPhone,POST,/login,200,SUCCESS,0,SID-831570,Low,Normal
+2026-08-04 09:48:06,EVT-1078,hrmanager,HR,192.168.1.230,Germany,Chrome/138 Windows,POST,/dashboard,200,SUCCESS,0,SID-308039,Low,Normal
+2026-08-04 09:48:43,EVT-1079,john,User,192.168.10.221,USA,Chrome/138 Windows,POST,/api/login,200,SUCCESS,0,SID-262705,Low,Normal
+2026-08-04 09:49:20,EVT-1080,emma,User,192.168.9.138,Canada,Edge Windows,POST,/login,200,SUCCESS,0,SID-894618,Low,Normal
+2026-08-04 09:49:57,EVT-1081,guest,Guest,192.168.4.212,Germany,Edge Windows,POST,/dashboard,200,SUCCESS,0,SID-838783,Low,Normal
+2026-08-04 09:50:34,EVT-1082,alice,User,192.168.9.75,Singapore,Firefox/141 Linux,POST,/profile,200,SUCCESS,0,SID-453573,Low,Normal
+2026-08-04 09:51:11,EVT-1083,john,User,192.168.4.21,UK,Firefox/141 Linux,POST,/profile,200,SUCCESS,0,SID-571661,Low,Normal
+2026-08-04 09:51:48,EVT-1084,john,User,192.168.5.11,Singapore,Edge Windows,POST,/profile,200,SUCCESS,0,SID-387738,Low,Normal
+2026-08-04 09:52:25,EVT-1085,finance,Finance,192.168.9.188,UK,Chrome/138 Windows,POST,/login,200,SUCCESS,0,SID-134116,Low,Normal
+2026-08-04 09:53:02,EVT-1086,hrmanager,HR,192.168.7.214,Germany,Chrome/138 Windows,POST,/login,200,SUCCESS,0,SID-727927,Low,Normal
+2026-08-04 09:53:39,EVT-1087,emma,User,192.168.0.99,Singapore,Firefox/141 Linux,POST,/dashboard,200,SUCCESS,0,SID-138881,Low,Normal
+2026-08-04 09:54:16,EVT-1088,admin,Administrator,192.168.3.108,Singapore,Edge Windows,POST,/admin,200,SUCCESS,0,SID-477930,Low,Normal
+2026-08-04 09:54:53,EVT-1089,emma,User,192.168.5.3,Germany,Chrome/138 Windows,POST,/dashboard,401,FAILED,2,SID-910732,Medium,Suspicious Login
+2026-08-04 09:55:30,EVT-1090,bob,User,192.168.6.38,Germany,Safari iPhone,POST,/dashboard,200,SUCCESS,0,SID-629637,Low,Normal
+2026-08-04 09:56:07,EVT-1091,alice,User,192.168.1.240,India,Chrome Android,POST,/login,200,SUCCESS,0,SID-859275,Low,Normal
+2026-08-04 09:56:44,EVT-1092,admin,Administrator,192.168.3.126,USA,Chrome/138 Windows,POST,/login,200,SUCCESS,0,SID-537486,Low,Normal
+2026-08-04 09:57:21,EVT-1093,guest,Guest,192.168.8.207,USA,Chrome/138 Windows,POST,/admin,401,FAILED,1,SID-414133,Medium,Suspicious Login
+2026-08-04 09:57:58,EVT-1094,admin,Administrator,192.168.10.161,Canada,Edge Windows,POST,/profile,200,SUCCESS,0,SID-974650,Low,Normal
+2026-08-04 09:58:35,EVT-1095,bob,User,192.168.1.229,Germany,Safari iPhone,POST,/admin,200,SUCCESS,0,SID-643727,Low,Normal
+2026-08-04 09:59:12,EVT-1096,finance,Finance,192.168.5.169,USA,Chrome/138 Windows,POST,/api/login,200,SUCCESS,0,SID-417054,Low,Normal
+2026-08-04 09:59:49,EVT-1097,emma,User,192.168.6.97,Canada,Firefox/141 Linux,POST,/profile,401,FAILED,1,SID-533870,Medium,Suspicious Login
+2026-08-04 10:00:26,EVT-1098,alice,User,192.168.4.68,India,Chrome Android,POST,/admin,200,SUCCESS,0,SID-587764,Low,Normal
+2026-08-04 10:01:03,EVT-1099,alice,User,192.168.4.234,UK,Edge Windows,POST,/api/login,401,FAILED,2,SID-272480,Medium,Suspicious Login

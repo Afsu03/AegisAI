@@ -1,0 +1,6 @@
+timestamp,event_id,username,role,ip_address,country,user_agent,method,endpoint,status_code,login_result,failed_attempts,session_id,risk_level,threat_label
+2026-08-15 08:00:00,EVT-0101,sarah_finance,Finance,198.51.100.10,USA,Chrome Windows,POST,/login,200,SUCCESS,0,SID-901121,Low,Normal Activity
+2026-08-15 08:05:00,EVT-0102,david_eng,Engineer,198.51.100.11,USA,Firefox Mac,POST,/login,200,SUCCESS,0,SID-901122,Low,Normal Activity
+2026-08-15 08:10:00,EVT-0103,elena_hr,HR,198.51.100.12,Canada,Safari iOS,POST,/login,200,SUCCESS,0,SID-901123,Low,Normal Activity
+2026-08-15 08:15:00,EVT-0104,marcus_dev,Developer,198.51.100.13,Germany,Chrome Linux,POST,/login,200,SUCCESS,0,SID-901124,Low,Normal Activity
+2026-08-15 08:20:00,EVT-0105,rachel_sec,Security,198.51.100.14,USA,Edge Windows,POST,/login,200,SUCCESS,0,SID-901125,Low,Normal Activity

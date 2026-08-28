@@ -1,0 +1,6 @@
+timestamp,event_id,username,role,ip_address,country,user_agent,method,endpoint,status_code,login_result,failed_attempts,session_id,risk_level,threat_label
+2026-08-15 13:00:00,EVT-0601,user1,User,198.51.100.1,USA,Chrome Windows,POST,/login,200,SUCCESS,0,SID-0601,Low,Normal
+2026-08-15 13:02:00,EVT-0602,user2,User,198.51.100.2,USA,Firefox Mac,POST,/login,401,FAILED,1,SID-0602,Low,Typo
+2026-08-15 13:03:00,EVT-0603,user2,User,198.51.100.2,USA,Firefox Mac,POST,/login,200,SUCCESS,0,SID-0603,Low,Normal
+2026-08-15 13:05:00,EVT-0604,attacker,Guest,203.0.113.99,Brazil,Python,POST,/login,401,FAILED,1,SID-0604,Medium,Suspicious
+2026-08-15 13:05:30,EVT-0605,attacker,Guest,203.0.113.99,Brazil,Python,POST,/login,401,FAILED,2,SID-0605,Medium,Suspicious

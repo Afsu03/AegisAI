@@ -1,0 +1,75 @@
+# ==============================================================================
+# AegisAI — Version Control Ignore Configuration
+# ==============================================================================
+
+# Environment variables & Secrets
+.env
+.env.*
+!.env.example
+*.env
+*.env.local
+
+# Dependency directories
+node_modules/
+*/node_modules/
+
+# Build & Compilation outputs
+dist/
+*/dist/
+build/
+*/build/
+out/
+*/out/
+.vite/
+*/.vite/
+.cache/
+*/.cache/
+*.tsbuildinfo
+coverage/
+*/coverage/
+
+# Logs & Diagnostics
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# AegisAI Backend Uploads (preserve .gitkeep, ignore runtime file uploads)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Gemini AI / Antigravity Agent local configurations
+.gemini/
+
+# IDE & Editor files
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Python (if any virtual environments or caches created locally)
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+*/.venv/
+venv/
+*/venv/
+env/
+*/env/
+
+# Operating System temporary files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini

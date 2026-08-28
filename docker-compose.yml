@@ -1,0 +1,63 @@
+version: '3.9'
+
+services:
+  # PostgreSQL Database for AegisAI
+  postgres:
+    image: postgres:15-alpine
+    container_name: aegis-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: aegis_admin
+      POSTGRES_PASSWORD: aegis_secure_password
+      POSTGRES_DB: aegis_ai_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - aegis-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aegis_admin -d aegis_ai_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Node.js Express REST Backend Microservice
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: aegis-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://aegis_admin:aegis_secure_password@postgres:5432/aegis_ai_db?schema=public
+      PORT: 5000
+    ports:
+      - "5000:5000"
+    networks:
+      - aegis-network
+
+  # React Frontend (Development / Production Server)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: aegis-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "5174:5174"
+    networks:
+      - aegis-network
+
+volumes:
+  pg_data:
+    driver: local
+
+networks:
+  aegis-network:
+    driver: bridge

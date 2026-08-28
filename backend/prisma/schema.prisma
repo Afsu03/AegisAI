@@ -1,0 +1,262 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+// ─────────────────────────────────────────────────────────────
+//  USER & OWNERSHIP MODELS (Phase 3 — Multi-User Platform)
+// ─────────────────────────────────────────────────────────────
+
+model User {
+  id               String            @id @default(uuid())
+  name             String
+  email            String            @unique
+  passwordHash     String
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  analyses         Analysis[]
+  aiProviderConfig AIProviderConfig?
+
+  @@index([email])
+}
+
+model AIProviderConfig {
+  id              String   @id @default(uuid())
+  userId          String   @unique
+  provider        String   @default("GEMINI") // GEMINI
+  encryptedApiKey String
+  enabled         Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Analysis {
+  id          String    @id @default(uuid())
+  userId      String
+  name        String
+  description String?
+  status      String    @default("READY") // PROCESSING | READY | ERROR
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  logFiles    LogFile[]
+
+  @@index([userId])
+}
+
+// ─────────────────────────────────────────────────────────────
+//  LOG INGESTION MODELS  (Phase 1 — Real Upload Platform)
+// ─────────────────────────────────────────────────────────────
+
+model LogFile {
+  id            String      @id @default(uuid())
+  analysisId    String?
+  fileName      String
+  originalName  String
+  fileSize      Int         // bytes
+  mimeType      String
+  logType       String      // CSV | JSON | SYSLOG | WINDOWS_EVENT | FIREWALL | GENERIC
+  totalLines    Int         @default(0)
+  parsedRecords Int         @default(0)
+  errorCount    Int         @default(0)
+  status        String      @default("PROCESSING") // PROCESSING | READY | ERROR
+  uploadedAt    DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  analysis      Analysis?   @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  records       LogRecord[]
+  threatEvents  ThreatEvent[]
+
+  @@index([analysisId])
+}
+
+model LogRecord {
+  id          String   @id @default(uuid())
+  fileId      String
+  rowIndex    Int      // 0-based row number in source file
+  raw         String   // original raw line/entry
+  timestamp   String?  // parsed timestamp if detected
+  level       String?  // INFO | WARN | ERROR | CRITICAL etc.
+  source      String?  // hostname, service, IP etc.
+  message     String?  // parsed message body
+  extra       String?  // JSON string of any extra parsed fields
+  createdAt   DateTime @default(now())
+
+  file        LogFile  @relation(fields: [fileId], references: [id], onDelete: Cascade)
+
+  @@index([fileId])
+  @@index([fileId, rowIndex])
+}
+
+// ─────────────────────────────────────────────────────────────
+//  THREAT DETECTION MODELS  (Phase 2A — Real Detection Platform)
+// ─────────────────────────────────────────────────────────────
+
+model ThreatEvent {
+  id              String      @id @default(uuid())
+  fileId          String?
+  title           String
+  category        String
+  severity        String      // HIGH | MEDIUM | LOW | INFO
+  riskScore       Int         // 0-100
+  description     String
+  evidence        Json        // Evidence metadata (failed attempts, IPs, usernames etc.)
+  sourceRecordIds Json        // String array of source LogRecord IDs
+  status          String      @default("ACTIVE") // ACTIVE | RESOLVED | FALSE_POSITIVE
+  detectedAt      DateTime    @default(now())
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  file            LogFile?    @relation(fields: [fileId], references: [id], onDelete: Cascade)
+  analyses        ThreatAnalysis[]
+  incidentSummaries IncidentSummary[]
+  riskAssessments RiskAssessment[]
+  recommendations ResponseRecommendation[]
+
+  @@index([fileId])
+  @@index([category])
+  @@index([severity])
+}
+
+model ThreatAnalysis {
+  id                      String      @id @default(uuid())
+  threatEventId           String
+  assessment              String
+  threatType              String
+  summary                 String
+  reasoning               String
+  evidence                Json        // String array
+  potentialImpact         String
+  uncertainties           Json        // String array
+  recommendedInvestigation Json       // String array
+  confidence              Float       // 0.0 - 1.0
+  model                   String
+  promptVersion           String
+  createdAt               DateTime    @default(now())
+  updatedAt               DateTime    @updatedAt
+
+  threatEvent             ThreatEvent @relation(fields: [threatEventId], references: [id], onDelete: Cascade)
+  incidentSummaries       IncidentSummary[]
+  riskAssessments         RiskAssessment[]
+  recommendations         ResponseRecommendation[]
+
+  @@index([threatEventId])
+}
+
+// ─────────────────────────────────────────────────────────────
+//  SOC INCIDENT SUMMARY MODEL (Phase 2C — Summarization Agent)
+// ─────────────────────────────────────────────────────────────
+
+model IncidentSummary {
+  id               String         @id @default(uuid())
+  threatEventId    String
+  threatAnalysisId String
+  incidentTitle    String
+  executiveSummary String
+  timelineSummary  String
+  target           String
+  source           String
+  observedActivity String
+  impactSummary    String
+  evidenceSummary  Json           // String array
+  uncertainties    Json           // String array
+  model            String
+  promptVersion    String
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  threatEvent      ThreatEvent    @relation(fields: [threatEventId], references: [id], onDelete: Cascade)
+  threatAnalysis   ThreatAnalysis @relation(fields: [threatAnalysisId], references: [id], onDelete: Cascade)
+  riskAssessments  RiskAssessment[]
+  recommendations  ResponseRecommendation[]
+
+  @@index([threatEventId])
+  @@index([threatAnalysisId])
+}
+
+// ─────────────────────────────────────────────────────────────
+//  RISK ASSESSMENT MODEL (Phase 2D — Risk Assessment Agent)
+// ─────────────────────────────────────────────────────────────
+
+model RiskAssessment {
+  id                String   @id @default(uuid())
+  threatEventId     String
+  threatAnalysisId  String
+  incidentSummaryId String?
+
+  likelihood        String   // LOW | MEDIUM | HIGH | CRITICAL
+  impact            String   // LOW | MEDIUM | HIGH | CRITICAL
+  targetCriticality String   // LOW | MEDIUM | HIGH | CRITICAL | UNKNOWN
+  evidenceStrength  String   // LOW | MEDIUM | HIGH
+
+  riskScore         Int      // 0 - 100 (Calculated by backend)
+  riskLevel         String   // LOW | MEDIUM | HIGH | CRITICAL (Calculated by backend)
+  priority          String   // P1 | P2 | P3 | P4 (Calculated by backend)
+
+  rationale         String
+  riskFactors       Json     // String array
+  uncertainties     Json     // String array
+
+  model             String
+  promptVersion     String
+
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  threatEvent       ThreatEvent      @relation(fields: [threatEventId], references: [id], onDelete: Cascade)
+  threatAnalysis    ThreatAnalysis   @relation(fields: [threatAnalysisId], references: [id], onDelete: Cascade)
+  incidentSummary   IncidentSummary? @relation(fields: [incidentSummaryId], references: [id], onDelete: SetNull)
+  recommendations   ResponseRecommendation[]
+
+  @@index([threatEventId])
+  @@index([threatAnalysisId])
+}
+
+// ─────────────────────────────────────────────────────────────
+//  RESPONSE RECOMMENDATION MODEL (Phase 2E — Recommendation Agent)
+// ─────────────────────────────────────────────────────────────
+
+model ResponseRecommendation {
+  id                String   @id @default(uuid())
+
+  threatEventId     String
+  threatAnalysisId  String
+  incidentSummaryId String?
+  riskAssessmentId  String
+
+  immediateActions          Json     // Array of { action, reason, priority }
+  investigationSteps        Json     // Array of { action, reason }
+  containmentOptions        Json     // Array of { action, condition, reason }
+  mitigationActions         Json     // Array of { action, reason }
+  monitoringRecommendations Json     // Array of { action, reason }
+
+  overallRecommendation String
+  humanReviewRequired    Boolean  @default(true)
+
+  uncertainties Json                 // String array
+
+  model        String
+  promptVersion String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  threatEvent       ThreatEvent       @relation(fields: [threatEventId], references: [id], onDelete: Cascade)
+  threatAnalysis    ThreatAnalysis    @relation(fields: [threatAnalysisId], references: [id], onDelete: Cascade)
+  incidentSummary   IncidentSummary?  @relation(fields: [incidentSummaryId], references: [id], onDelete: SetNull)
+  riskAssessment    RiskAssessment    @relation(fields: [riskAssessmentId], references: [id], onDelete: Cascade)
+
+  @@index([threatEventId])
+  @@index([riskAssessmentId])
+}
